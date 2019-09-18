@@ -8,6 +8,7 @@ target 'NotesApp' do
   # Pods for NotesApp
 
   pod 'Firebase/Analytics'
-
-
+  pod 'Firebase/Auth'
+  pod 'IQKeyboardManagerSwift'
+  pod 'SVProgressHUD'
 end

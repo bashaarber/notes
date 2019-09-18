@@ -7,20 +7,28 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
+import SVProgressHUD
 
 class NotesListViewController: UIViewController {
 
+    var user: User!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        print("USER UID:\(user.uid)")
+        print("USER EMAIL:\(user.email)")
+    }
+   
+    @IBAction func btnLogOutTap(_ sender: Any) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            navigationController?.popViewController(animated: true)
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
     }
     
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
-       
-
 }

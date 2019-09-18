@@ -394,7 +394,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1959747ECF331234410F2946 /* Pods-NotesApp.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TPD86YV292;
 				INFOPLIST_FILE = NotesApp/Info.plist;
@@ -413,7 +413,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A0DFE37CC5029E1A121FA82B /* Pods-NotesApp.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TPD86YV292;
 				INFOPLIST_FILE = NotesApp/Info.plist;
