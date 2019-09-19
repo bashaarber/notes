@@ -66,7 +66,7 @@ class MainViewController: UIViewController , UITextFieldDelegate {
                 let authUser = usr.user
                 let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let vc = storyboard.instantiateViewController(withIdentifier: "notesListVC") as! NotesListViewController
-                vc.user = authUser
+                vc.logedUser = authUser
                 self?.navigationController?.pushViewController(vc, animated: true)
                 SVProgressHUD.dismiss()
             }else{

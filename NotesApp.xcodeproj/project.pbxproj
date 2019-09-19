@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3500C7742332500A002735AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3500C7732332500A002735AC /* Assets.xcassets */; };
+		3500C7762332517A002735AC /* CreateNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3500C7752332517A002735AC /* CreateNoteViewController.swift */; };
+		3500C77823325BE6002735AC /* NotesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3500C77723325BE6002735AC /* NotesCollectionViewCell.swift */; };
+		3500C77A23339B93002735AC /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3500C77923339B93002735AC /* Note.swift */; };
 		3515D203233110B600A67DC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3515D202233110B600A67DC2 /* AppDelegate.swift */; };
 		3515D208233110B600A67DC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3515D206233110B600A67DC2 /* Main.storyboard */; };
-		3515D20A233110C100A67DC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3515D209233110C100A67DC2 /* Assets.xcassets */; };
 		3515D20D233110C100A67DC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3515D20B233110C100A67DC2 /* LaunchScreen.storyboard */; };
 		3515D215233110FC00A67DC2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3515D214233110FC00A67DC2 /* GoogleService-Info.plist */; };
 		3515D21723311F7700A67DC2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3515D21623311F7700A67DC2 /* MainViewController.swift */; };
@@ -21,10 +24,13 @@
 /* Begin PBXFileReference section */
 		16DD325E639D2B29B00E84FC /* Pods_NotesApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotesApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1959747ECF331234410F2946 /* Pods-NotesApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotesApp.debug.xcconfig"; path = "Target Support Files/Pods-NotesApp/Pods-NotesApp.debug.xcconfig"; sourceTree = "<group>"; };
+		3500C7732332500A002735AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3500C7752332517A002735AC /* CreateNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNoteViewController.swift; sourceTree = "<group>"; };
+		3500C77723325BE6002735AC /* NotesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCollectionViewCell.swift; sourceTree = "<group>"; };
+		3500C77923339B93002735AC /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		3515D1FF233110B600A67DC2 /* NotesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3515D202233110B600A67DC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3515D207233110B600A67DC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3515D209233110C100A67DC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3515D20C233110C100A67DC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3515D20E233110C100A67DC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3515D214233110FC00A67DC2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -82,7 +88,7 @@
 				3515D2182331207800A67DC2 /* Models */,
 				3515D202233110B600A67DC2 /* AppDelegate.swift */,
 				3515D214233110FC00A67DC2 /* GoogleService-Info.plist */,
-				3515D209233110C100A67DC2 /* Assets.xcassets */,
+				3500C7732332500A002735AC /* Assets.xcassets */,
 				3515D20B233110C100A67DC2 /* LaunchScreen.storyboard */,
 				3515D20E233110C100A67DC2 /* Info.plist */,
 			);
@@ -92,6 +98,7 @@
 		3515D2182331207800A67DC2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3500C77923339B93002735AC /* Note.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -102,6 +109,7 @@
 				3515D21623311F7700A67DC2 /* MainViewController.swift */,
 				3515D21C233120DB00A67DC2 /* NotesListViewController.swift */,
 				3515D21E233121E200A67DC2 /* SingUpViewController.swift */,
+				3500C7752332517A002735AC /* CreateNoteViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -117,6 +125,7 @@
 		3515D21B2331208A00A67DC2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3500C77723325BE6002735AC /* NotesCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -190,8 +199,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3515D20D233110C100A67DC2 /* LaunchScreen.storyboard in Resources */,
+				3500C7742332500A002735AC /* Assets.xcassets in Resources */,
 				3515D215233110FC00A67DC2 /* GoogleService-Info.plist in Resources */,
-				3515D20A233110C100A67DC2 /* Assets.xcassets in Resources */,
 				3515D208233110B600A67DC2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -247,7 +256,10 @@
 			files = (
 				3515D203233110B600A67DC2 /* AppDelegate.swift in Sources */,
 				3515D21D233120DB00A67DC2 /* NotesListViewController.swift in Sources */,
+				3500C77A23339B93002735AC /* Note.swift in Sources */,
 				3515D21F233121E200A67DC2 /* SingUpViewController.swift in Sources */,
+				3500C7762332517A002735AC /* CreateNoteViewController.swift in Sources */,
+				3500C77823325BE6002735AC /* NotesCollectionViewCell.swift in Sources */,
 				3515D21723311F7700A67DC2 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -405,7 +417,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = arberbasha.NotesApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -424,7 +436,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = arberbasha.NotesApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
