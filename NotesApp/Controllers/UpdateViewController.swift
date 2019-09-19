@@ -103,9 +103,9 @@ class UpdateViewController: UIViewController , UITextViewDelegate , UITextFieldD
             if let err = err {
                 print("Error updating document: \(err)")
             } else {
-                self.navigationController?.popViewController(animated: true)
             }
         }
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func btnTrashTap(_ sender: Any) {
@@ -116,9 +116,9 @@ class UpdateViewController: UIViewController , UITextViewDelegate , UITextFieldD
             if let err = err {
                 print("Error removing document: \(err)")
             } else {
-                self.navigationController?.popViewController(animated: true)
             }
         }
+        self.navigationController?.popViewController(animated: true)
     }
     
     func createCustomBlur(){

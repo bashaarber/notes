@@ -97,9 +97,9 @@ class CreateNoteViewController: UIViewController , UITextViewDelegate , UITextFi
                 if let err = err {
                     print("Error adding document: \(err)")
                 } else {
-                    self.dismiss(animated: true) {}
                 }
             }
+        self.dismiss(animated: true) {}
 
         
     }
