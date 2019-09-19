@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import SVProgressHUD
+import IQKeyboardManagerSwift
 
 class CreateNoteViewController: UIViewController , UITextViewDelegate , UITextFieldDelegate {
 
@@ -22,8 +23,21 @@ class CreateNoteViewController: UIViewController , UITextViewDelegate , UITextFi
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTexts()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if self.view.frame.origin.y == 0 {
+            self.view.frame.origin.y -= 70
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
     
     func setUpTexts(){
@@ -52,7 +66,7 @@ class CreateNoteViewController: UIViewController , UITextViewDelegate , UITextFi
     @IBAction func btnCreateNotesTap(_ sender: Any) {
         SVProgressHUD.setDefaultStyle(.dark)
         createCustomBlur()
-        SVProgressHUD.show()
+        SVProgressHUD.show(withStatus: "Creating")
             let title = self.txtTitle.text!
             let text = self.txtViewText.text!
             var ref: DocumentReference? = nil
@@ -86,5 +100,7 @@ class CreateNoteViewController: UIViewController , UITextViewDelegate , UITextFi
         view.addSubview(blurEffectView)
     }
     
+    
 
 }
+

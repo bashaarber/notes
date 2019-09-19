@@ -17,6 +17,7 @@ class MainViewController: UIViewController , UITextFieldDelegate {
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
     
+    var blurEffectView: UIView!
     var handle: Auth!
     
     override func viewDidLoad() {
@@ -27,13 +28,14 @@ class MainViewController: UIViewController , UITextFieldDelegate {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+        SVProgressHUD.dismiss()
+        view.isUserInteractionEnabled = true
+        deleteText()
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if self.view.frame.origin.y == 0 {
-            self.view.frame.origin.y -= 70
+            self.view.frame.origin.y -= 80
         }
     }
     
@@ -43,6 +45,10 @@ class MainViewController: UIViewController , UITextFieldDelegate {
         }
     }
     
+    func deleteText(){
+        txtEmail.text = ""
+        txtPassword.text = ""
+    }
 
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -56,6 +62,7 @@ class MainViewController: UIViewController , UITextFieldDelegate {
     }
      
     @IBAction func btnLoginTap(_ sender: Any) {
+        view.isUserInteractionEnabled = false
         txtEmail.resignFirstResponder()
         txtPassword.resignFirstResponder()
         SVProgressHUD.show()
@@ -72,6 +79,7 @@ class MainViewController: UIViewController , UITextFieldDelegate {
             }else{
                 self?.showErrorWith(message: "Email or Password is wrong")
                 SVProgressHUD.dismiss()
+                self?.view.isUserInteractionEnabled = true
             }
         }
 
@@ -89,6 +97,12 @@ class MainViewController: UIViewController , UITextFieldDelegate {
         self.present(alert, animated: true)
     }
     
+    func createCustomBlur(){
+        let blurEffect = UIBlurEffect(style: .regular) // .extraLight or .dark
+        blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = view.frame
+        view.addSubview(blurEffectView)
+    }
     
     
 }

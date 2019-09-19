@@ -18,6 +18,7 @@ class SingUpViewController: UIViewController , UITextFieldDelegate {
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
     
+    var blurEffectView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,16 +59,19 @@ class SingUpViewController: UIViewController , UITextFieldDelegate {
     @IBAction func btnCreateTap(_ sender: Any) {
         txtEmail.resignFirstResponder()
         txtPassword.resignFirstResponder()
+        SVProgressHUD.setDefaultStyle(.dark)
+        createCustomBlur()
         SVProgressHUD.show()
         let email = txtEmail.text!
         let password = txtPassword.text!
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if authResult != nil{
                 self.dismiss(animated: true) {
-                    SVProgressHUD.dismiss()
+                    self.blurEffectView.removeFromSuperview()
                 }
             }else{
                 SVProgressHUD.dismiss()
+                self.blurEffectView.removeFromSuperview()
                 self.showErrorWith(message: "Email or Password is Wrong")
             }
         }
@@ -85,4 +89,10 @@ class SingUpViewController: UIViewController , UITextFieldDelegate {
         self.present(alert, animated: true)
     }
     
+    func createCustomBlur(){
+        let blurEffect = UIBlurEffect(style: .regular) // .extraLight or .dark
+        blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = view.frame
+        view.addSubview(blurEffectView)
+    }
 }

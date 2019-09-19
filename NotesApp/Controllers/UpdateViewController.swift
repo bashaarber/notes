@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import SVProgressHUD
+import IQKeyboardManagerSwift
 
 class UpdateViewController: UIViewController , UITextViewDelegate , UITextFieldDelegate{
     
@@ -25,9 +26,24 @@ class UpdateViewController: UIViewController , UITextViewDelegate , UITextFieldD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        createScreenEdgeSwipe()
         setUpTexts()
         txtTitle.text = noteTitle
         txtViewText.text = noteText
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if self.view.frame.origin.y == 0 {
+            self.view.frame.origin.y -= 70
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
     
     func setUpTexts(){
@@ -57,7 +73,7 @@ class UpdateViewController: UIViewController , UITextViewDelegate , UITextFieldD
     @IBAction func btnUpdateTap(_ sender: Any) {
         SVProgressHUD.setDefaultStyle(.dark)
         createCustomBlur()
-        SVProgressHUD.show()
+        SVProgressHUD.show(withStatus: "Updating")
         let title = txtTitle.text!
         let text = txtViewText.text!
         db.collection(userEmail).document(noteDocumentID).updateData([
@@ -75,7 +91,7 @@ class UpdateViewController: UIViewController , UITextViewDelegate , UITextFieldD
     @IBAction func btnTrashTap(_ sender: Any) {
         SVProgressHUD.setDefaultStyle(.dark)
         createCustomBlur()
-        SVProgressHUD.show()
+        SVProgressHUD.show(withStatus: "Deleting")
         db.collection(userEmail).document(noteDocumentID).delete() { err in
             if let err = err {
                 print("Error removing document: \(err)")
@@ -91,5 +107,21 @@ class UpdateViewController: UIViewController , UITextViewDelegate , UITextFieldD
         blurEffectView.frame = view.frame
         view.addSubview(blurEffectView)
     }
+    
+    func createScreenEdgeSwipe(){
+        let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
+        edgePan.edges = .left
+        
+        view.addGestureRecognizer(edgePan)
+    }
+    
+    @objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
+        if recognizer.state == .recognized {
+            SVProgressHUD.setDefaultStyle(.dark)
+            SVProgressHUD.show()
+            self.navigationController?.popViewController(animated: false)
+        }
+    }
+    
     
 }
