@@ -15,10 +15,12 @@ class CreateNoteViewController: UIViewController , UITextViewDelegate , UITextFi
 
     @IBOutlet weak var txtViewText: UITextView!
     @IBOutlet weak var txtTitle: UITextField!
+    @IBOutlet weak var lblCreateNote: UILabel!
     
     var userEmail: String!
     let db = Firestore.firestore()
     var blurEffectView: UIView!
+    var darkMode: Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +28,24 @@ class CreateNoteViewController: UIViewController , UITextViewDelegate , UITextFi
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if darkMode == true{
+            view.backgroundColor = UIColor.black
+            lblCreateNote.textColor = UIColor.white
+            txtViewText.layer.borderWidth = 1.0
+            txtViewText.clipsToBounds = true
+            txtViewText.layer.cornerRadius = 10
+            txtViewText.layer.borderColor = UIColor.white.cgColor
+            txtViewText.textColor = UIColor.white
+            txtViewText.backgroundColor = UIColor.black
+            txtTitle.layer.borderWidth = 1.0
+            txtTitle.clipsToBounds = true
+            txtTitle.layer.cornerRadius = 10
+            txtTitle.layer.borderColor = UIColor.white.cgColor
+            txtTitle.textColor = UIColor.white
+        }
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {

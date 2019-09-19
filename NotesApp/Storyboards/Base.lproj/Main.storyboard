@@ -368,6 +368,18 @@
                                     <action selector="btnLogOutTap:" destination="Fkn-gG-7vh" eventType="touchUpInside" id="Vfy-Lq-TCi"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cZO-ub-Ces">
+                                <rect key="frame" x="30" y="50" width="36" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="eEk-Ja-bFY"/>
+                                    <constraint firstAttribute="width" constant="36" id="lq6-Ip-0iB"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="baseline_invert_colors_black_36pt"/>
+                                <connections>
+                                    <action selector="btnDarkModeTap:" destination="Fkn-gG-7vh" eventType="touchUpInside" id="sdv-4i-LVE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -379,14 +391,18 @@
                             <constraint firstItem="HuY-ol-ooz" firstAttribute="centerX" secondItem="ZGu-Gn-jhD" secondAttribute="centerX" id="GJt-zy-ty2"/>
                             <constraint firstItem="Ou8-Ev-HnC" firstAttribute="top" secondItem="aBo-bO-V3V" secondAttribute="bottom" constant="20" id="GSs-nu-fRo"/>
                             <constraint firstAttribute="bottom" secondItem="Ou8-Ev-HnC" secondAttribute="bottom" constant="20" id="N7E-yn-p6u"/>
+                            <constraint firstItem="cZO-ub-Ces" firstAttribute="top" secondItem="7is-JE-w6M" secondAttribute="top" constant="30" id="V8o-8G-I8L"/>
                             <constraint firstItem="HuY-ol-ooz" firstAttribute="top" secondItem="7is-JE-w6M" secondAttribute="top" constant="40" id="ZRE-Ah-Iof"/>
+                            <constraint firstItem="cZO-ub-Ces" firstAttribute="leading" secondItem="7is-JE-w6M" secondAttribute="leading" constant="30" id="eud-XC-D4Z"/>
                             <constraint firstItem="Ou8-Ev-HnC" firstAttribute="centerX" secondItem="ZGu-Gn-jhD" secondAttribute="centerX" id="rdL-z9-HH9"/>
                             <constraint firstItem="7is-JE-w6M" firstAttribute="trailing" secondItem="6fy-ze-teZ" secondAttribute="trailing" constant="30" id="tJM-C7-sxQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7is-JE-w6M"/>
                     </view>
                     <connections>
+                        <outlet property="btnDarkMode" destination="cZO-ub-Ces" id="2fZ-kS-Vdr"/>
                         <outlet property="collectionView" destination="aBo-bO-V3V" id="nPa-As-fte"/>
+                        <outlet property="txtNotesList" destination="HuY-ol-ooz" id="hAE-te-vAa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G60-d8-XCd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -477,6 +493,7 @@
                         <viewLayoutGuide key="safeArea" id="FET-UG-ps9"/>
                     </view>
                     <connections>
+                        <outlet property="lblCreateNote" destination="6aZ-k2-pGs" id="onw-NE-x52"/>
                         <outlet property="txtTitle" destination="fYg-2Z-Cnw" id="Wnu-uO-8q3"/>
                         <outlet property="txtViewText" destination="b8U-8I-xXq" id="yGB-in-oZf"/>
                     </connections>
@@ -572,6 +589,7 @@
                         <viewLayoutGuide key="safeArea" id="LeQ-wr-bAo"/>
                     </view>
                     <connections>
+                        <outlet property="lblUpdateNote" destination="CVe-Ej-GUf" id="pT1-Do-yco"/>
                         <outlet property="txtTitle" destination="nHk-MC-F1C" id="X90-FF-wLr"/>
                         <outlet property="txtViewText" destination="Lc4-ea-dSO" id="7Tt-PS-DID"/>
                     </connections>
@@ -599,6 +617,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="baseline_invert_colors_black_36pt" width="36" height="36"/>
         <image name="baseline_note_add_black_48pt" width="48" height="48"/>
         <image name="post-it" width="128" height="128"/>
     </resources>

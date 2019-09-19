@@ -16,9 +16,13 @@ class NotesListViewController: UIViewController , UICollectionViewDataSource , U
 
 
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var txtNotesList: UILabel!
+    @IBOutlet weak var btnDarkMode: UIButton!
+    
     var logedUser: User!
     var notesArray: [Note] = []
     var blurEffectView: UIView!
+    var darkMode: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +32,14 @@ class NotesListViewController: UIViewController , UICollectionViewDataSource , U
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        let savedMode = UserDefaults.standard.bool(forKey: "darkMode")
+        if savedMode == true {
+        darkMode = savedMode
+        self.txtNotesList.textColor = UIColor.white
+        view.backgroundColor = UIColor.black
+        self.btnDarkMode.tintColor = UIColor.white
+        self.collectionView.backgroundColor = UIColor.black
+        }
         notesArray = []
         createCustomBlur()
         getCurrentUser()
@@ -39,6 +51,7 @@ class NotesListViewController: UIViewController , UICollectionViewDataSource , U
         do {
             try firebaseAuth.signOut()
             navigationController?.popViewController(animated: true)
+            UserDefaults.standard.set(false, forKey: "darkMode")
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
@@ -75,6 +88,7 @@ class NotesListViewController: UIViewController , UICollectionViewDataSource , U
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "createNotesVC") as! CreateNoteViewController
         vc.userEmail = logedUser.email
+        vc.darkMode = darkMode
         self.present(vc, animated: true)
     }
     
@@ -86,10 +100,19 @@ class NotesListViewController: UIViewController , UICollectionViewDataSource , U
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NotesCollectionViewCell", for: indexPath) as! NotesCollectionViewCell
-        cell.layer.borderColor = UIColor.black.cgColor
+        if darkMode == true {
+            cell.layer.borderColor = UIColor.white.cgColor
+            cell.txtTitle.textColor = UIColor.white
+            cell.textView.textColor = UIColor.white
+        }else{
+            cell.layer.borderColor = UIColor.black.cgColor
+            cell.txtTitle.textColor = UIColor.black
+            cell.textView.textColor = UIColor.black
+        }
         cell.layer.borderWidth = 1
         cell.layer.cornerRadius = 10
         cell.isUserInteractionEnabled = true
+
         let note = notesArray[indexPath.row]
         
         cell.txtTitle.text = note.title
@@ -106,6 +129,7 @@ class NotesListViewController: UIViewController , UICollectionViewDataSource , U
         vc.noteTitle = note.title
         vc.noteText = note.text
         vc.userEmail = logedUser.email
+        vc.darkMode = darkMode
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -121,5 +145,30 @@ class NotesListViewController: UIViewController , UICollectionViewDataSource , U
         blurEffectView.frame = view.frame
         view.addSubview(blurEffectView)
     }
+    
+    
+    @IBAction func btnDarkModeTap(_ sender: Any) {
+        if darkMode == false{
+            darkMode = true
+            UserDefaults.standard.set(true, forKey: "darkMode")
+            self.txtNotesList.textColor = UIColor.white
+            view.backgroundColor = UIColor.black
+            self.btnDarkMode.tintColor = UIColor.white
+            self.collectionView.backgroundColor = UIColor.black
+            self.viewDidLoad()
+            self.viewWillAppear(true)
+        }else{
+            darkMode = false
+            UserDefaults.standard.set(false, forKey: "darkMode")
+            self.txtNotesList.textColor = UIColor.black
+            view.backgroundColor = UIColor.white
+            self.btnDarkMode.tintColor = UIColor.black
+            self.collectionView.backgroundColor = UIColor.white
+            self.viewDidLoad()
+            self.viewWillAppear(true)
+        }
+
+    }
+    
     
 }
