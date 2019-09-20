@@ -46,6 +46,7 @@ class UpdateViewController: UIViewController , UITextViewDelegate , UITextFieldD
             txtViewText.layer.borderColor = UIColor.white.cgColor
             txtViewText.textColor = UIColor.white
             txtViewText.backgroundColor = UIColor.black
+            txtViewText.keyboardAppearance = .dark
             txtTitle.layer.borderWidth = 1.0
             txtTitle.clipsToBounds = true
             txtTitle.layer.cornerRadius = 10
@@ -96,16 +97,22 @@ class UpdateViewController: UIViewController , UITextViewDelegate , UITextFieldD
         SVProgressHUD.show(withStatus: "Updating")
         let title = txtTitle.text!
         let text = txtViewText.text!
-        db.collection(userEmail).document(noteDocumentID).updateData([
-            "title": title,
-            "text": text
-        ]) { err in
-            if let err = err {
-                print("Error updating document: \(err)")
-            } else {
+        if (title != ""){
+            db.collection(userEmail).document(noteDocumentID).updateData([
+                "title": title,
+                "text": text
+            ]) { err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                }
             }
+            self.navigationController?.popViewController(animated: true)
+        }else{
+            self.showErrorWith(message: "Title must have at least one letter")
+            blurEffectView.removeFromSuperview()
+            SVProgressHUD.dismiss()
         }
-        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func btnTrashTap(_ sender: Any) {
@@ -142,6 +149,11 @@ class UpdateViewController: UIViewController , UITextViewDelegate , UITextFieldD
             self.navigationController?.popViewController(animated: false)
         }
     }
-    
+
+    func showErrorWith(message: String){
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .destructive, handler: nil))
+        self.present(alert, animated: true)
+    }
     
 }

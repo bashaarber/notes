@@ -12,5 +12,6 @@ target 'NotesApp' do
   pod 'Firebase/Firestore'
   pod 'IQKeyboardManagerSwift'
   pod 'SVProgressHUD'
+  pod 'Motion'
 
 end

@@ -111,6 +111,9 @@ PODS:
   - GTMSessionFetcher/Core (1.2.2)
   - IQKeyboardManagerSwift (6.4.1)
   - leveldb-library (1.20)
+  - Motion (3.1.1):
+    - Motion/Core (= 3.1.1)
+  - Motion/Core (3.1.1)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
@@ -124,10 +127,11 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Firestore
   - IQKeyboardManagerSwift
+  - Motion
   - SVProgressHUD
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - BoringSSL-GRPC
     - Firebase
     - FirebaseAnalytics
@@ -147,6 +151,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - IQKeyboardManagerSwift
     - leveldb-library
+    - Motion
     - nanopb
     - Protobuf
     - SVProgressHUD
@@ -171,10 +176,11 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
   IQKeyboardManagerSwift: d2df660d0b8d64a15cb2537c9ff303213fa515b2
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
+  Motion: f115b33f36cc52472a25a965daa89b3859817de0
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 1097ca58584c8d9be81bfbf2c5ff5975648dd87a
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 080b141d63deaaf639a807fd3acf28122aafbc30
+PODFILE CHECKSUM: 4eefbcc9f76660123a6ddf6f16d303d5cd4fb074
 
-COCOAPODS: 1.8.0.beta.2
+COCOAPODS: 1.7.5

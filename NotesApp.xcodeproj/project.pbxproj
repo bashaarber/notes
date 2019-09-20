@@ -19,6 +19,7 @@
 		3515D21723311F7700A67DC2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3515D21623311F7700A67DC2 /* MainViewController.swift */; };
 		3515D21D233120DB00A67DC2 /* NotesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3515D21C233120DB00A67DC2 /* NotesListViewController.swift */; };
 		3515D21F233121E200A67DC2 /* SingUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3515D21E233121E200A67DC2 /* SingUpViewController.swift */; };
+		35EC92752334CA7000793FCB /* NotesNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EC92742334CA7000793FCB /* NotesNavigationController.swift */; };
 		574E6B102C9E5E404D713FA1 /* Pods_NotesApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16DD325E639D2B29B00E84FC /* Pods_NotesApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		3515D21623311F7700A67DC2 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3515D21C233120DB00A67DC2 /* NotesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListViewController.swift; sourceTree = "<group>"; };
 		3515D21E233121E200A67DC2 /* SingUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingUpViewController.swift; sourceTree = "<group>"; };
+		35EC92742334CA7000793FCB /* NotesNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesNavigationController.swift; sourceTree = "<group>"; };
 		A0DFE37CC5029E1A121FA82B /* Pods-NotesApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotesApp.release.xcconfig"; path = "Target Support Files/Pods-NotesApp/Pods-NotesApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,6 +115,7 @@
 				3515D21E233121E200A67DC2 /* SingUpViewController.swift */,
 				3500C7752332517A002735AC /* CreateNoteViewController.swift */,
 				3500C77B2333A37A002735AC /* UpdateViewController.swift */,
+				35EC92742334CA7000793FCB /* NotesNavigationController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				3500C77A23339B93002735AC /* Note.swift in Sources */,
 				3515D21F233121E200A67DC2 /* SingUpViewController.swift in Sources */,
 				3500C7762332517A002735AC /* CreateNoteViewController.swift in Sources */,
+				35EC92752334CA7000793FCB /* NotesNavigationController.swift in Sources */,
 				3500C77823325BE6002735AC /* NotesCollectionViewCell.swift in Sources */,
 				3515D21723311F7700A67DC2 /* MainViewController.swift in Sources */,
 				3500C77C2333A37A002735AC /* UpdateViewController.swift in Sources */,

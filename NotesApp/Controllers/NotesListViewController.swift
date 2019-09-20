@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import SVProgressHUD
-
+import Motion
 
 class NotesListViewController: UIViewController , UICollectionViewDataSource , UICollectionViewDelegate {
 
@@ -35,6 +35,7 @@ class NotesListViewController: UIViewController , UICollectionViewDataSource , U
         let savedMode = UserDefaults.standard.bool(forKey: "darkMode")
         if savedMode == true {
         darkMode = savedMode
+        UITextField.appearance().keyboardAppearance = .dark
         self.txtNotesList.textColor = UIColor.white
         view.backgroundColor = UIColor.black
         self.btnDarkMode.tintColor = UIColor.white
@@ -130,7 +131,7 @@ class NotesListViewController: UIViewController , UICollectionViewDataSource , U
         vc.noteText = note.text
         vc.userEmail = logedUser.email
         vc.darkMode = darkMode
-        navigationController?.pushViewController(vc, animated: true)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func getCurrentUser(){
@@ -151,6 +152,7 @@ class NotesListViewController: UIViewController , UICollectionViewDataSource , U
         if darkMode == false{
             darkMode = true
             UserDefaults.standard.set(true, forKey: "darkMode")
+            UITextField.appearance().keyboardAppearance = .dark
             self.txtNotesList.textColor = UIColor.white
             view.backgroundColor = UIColor.black
             self.btnDarkMode.tintColor = UIColor.white
@@ -160,6 +162,7 @@ class NotesListViewController: UIViewController , UICollectionViewDataSource , U
         }else{
             darkMode = false
             UserDefaults.standard.set(false, forKey: "darkMode")
+            UITextField.appearance().keyboardAppearance = .light
             self.txtNotesList.textColor = UIColor.black
             view.backgroundColor = UIColor.white
             self.btnDarkMode.tintColor = UIColor.black
@@ -169,6 +172,7 @@ class NotesListViewController: UIViewController , UICollectionViewDataSource , U
         }
 
     }
-    
-    
+
 }
+
+

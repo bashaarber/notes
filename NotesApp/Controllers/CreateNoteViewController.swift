@@ -40,6 +40,7 @@ class CreateNoteViewController: UIViewController , UITextViewDelegate , UITextFi
             txtViewText.layer.borderColor = UIColor.white.cgColor
             txtViewText.textColor = UIColor.white
             txtViewText.backgroundColor = UIColor.black
+            txtViewText.keyboardAppearance = .dark
             txtTitle.layer.borderWidth = 1.0
             txtTitle.clipsToBounds = true
             txtTitle.layer.cornerRadius = 10
@@ -87,8 +88,9 @@ class CreateNoteViewController: UIViewController , UITextViewDelegate , UITextFi
         SVProgressHUD.setDefaultStyle(.dark)
         createCustomBlur()
         SVProgressHUD.show(withStatus: "Creating")
-            let title = self.txtTitle.text!
-            let text = self.txtViewText.text!
+        let title = self.txtTitle.text!
+        let text = self.txtViewText.text!
+        if (title != ""){
             var ref: DocumentReference? = nil
             ref = self.db.collection(self.userEmail).addDocument(data: [
                 "title": title,
@@ -99,8 +101,12 @@ class CreateNoteViewController: UIViewController , UITextViewDelegate , UITextFi
                 } else {
                 }
             }
-        self.dismiss(animated: true) {}
-
+            self.dismiss(animated: true) {}
+        }else{
+            self.showErrorWith(message: "Title must have at least one letter")
+            blurEffectView.removeFromSuperview()
+            SVProgressHUD.dismiss()
+        }
         
     }
     
@@ -120,6 +126,11 @@ class CreateNoteViewController: UIViewController , UITextViewDelegate , UITextFi
         view.addSubview(blurEffectView)
     }
     
+    func showErrorWith(message: String){
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .destructive, handler: nil))
+        self.present(alert, animated: true)
+    }
     
 
 }

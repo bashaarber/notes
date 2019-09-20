@@ -598,10 +598,10 @@
             </objects>
             <point key="canvasLocation" x="3166" y="337"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Notes Navigation Controller-->
         <scene sceneID="tRt-jR-Mzx">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Nkp-cj-Gee" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Nkp-cj-Gee" customClass="NotesNavigationController" customModule="NotesApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="I9b-hf-MR9">
                         <autoresizingMask key="autoresizingMask"/>
