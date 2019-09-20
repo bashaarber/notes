@@ -72,10 +72,12 @@ class UpdateViewController: UIViewController , UITextViewDelegate , UITextFieldD
         txtViewText.layer.borderWidth = 1.0
         txtViewText.clipsToBounds = true
         txtViewText.layer.cornerRadius = 10
+        txtViewText.layer.maskedCorners = [.layerMinXMaxYCorner , .layerMaxXMaxYCorner]
         txtTitle.delegate = self
         txtTitle.layer.borderWidth = 1.0
         txtTitle.clipsToBounds = true
         txtTitle.layer.cornerRadius = 10
+        txtTitle.layer.maskedCorners = [.layerMinXMinYCorner , .layerMaxXMinYCorner]
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

@@ -18,6 +18,7 @@ class NotesListViewController: UIViewController , UICollectionViewDataSource , U
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var txtNotesList: UILabel!
     @IBOutlet weak var btnDarkMode: UIButton!
+
     
     var logedUser: User!
     var notesArray: [Note] = []

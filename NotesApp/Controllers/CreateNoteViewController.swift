@@ -41,11 +41,13 @@ class CreateNoteViewController: UIViewController , UITextViewDelegate , UITextFi
             txtViewText.textColor = UIColor.white
             txtViewText.backgroundColor = UIColor.black
             txtViewText.keyboardAppearance = .dark
+            txtViewText.layer.maskedCorners = [.layerMinXMaxYCorner , .layerMaxXMaxYCorner]
             txtTitle.layer.borderWidth = 1.0
             txtTitle.clipsToBounds = true
             txtTitle.layer.cornerRadius = 10
             txtTitle.layer.borderColor = UIColor.white.cgColor
             txtTitle.textColor = UIColor.white
+            txtTitle.layer.maskedCorners = [.layerMinXMinYCorner , .layerMaxXMinYCorner]
         }
     }
     
