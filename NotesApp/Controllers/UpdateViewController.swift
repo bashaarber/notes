@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import SVProgressHUD
 import IQKeyboardManagerSwift
+import LocalAuthentication
 
 class UpdateViewController: UIViewController , UITextViewDelegate , UITextFieldDelegate{
     
@@ -118,16 +119,7 @@ class UpdateViewController: UIViewController , UITextViewDelegate , UITextFieldD
     }
     
     @IBAction func btnTrashTap(_ sender: Any) {
-        SVProgressHUD.setDefaultStyle(.dark)
-        createCustomBlur()
-        SVProgressHUD.show(withStatus: "Deleting")
-        db.collection(userEmail).document(noteDocumentID).delete() { err in
-            if let err = err {
-                print("Error removing document: \(err)")
-            } else {
-            }
-        }
-        self.navigationController?.popViewController(animated: true)
+          authenticateUser()
     }
     
     func createCustomBlur(){
@@ -158,4 +150,45 @@ class UpdateViewController: UIViewController , UITextViewDelegate , UITextFieldD
         self.present(alert, animated: true)
     }
     
+    func authenticateUser(){
+        let context = LAContext()
+        var error: NSError?
+
+
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            let reason = "Identify yourself!"
+
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) {
+                [unowned self] success, authenticationError in
+
+                DispatchQueue.main.async {
+                    if success {
+                        
+                        SVProgressHUD.setDefaultStyle(.dark)
+                        self.createCustomBlur()
+                        SVProgressHUD.show(withStatus: "Deleting")
+                        self.db.collection(self.userEmail).document(self.noteDocumentID).delete() { err in
+                            if let err = err {
+                                print("Error removing document: \(err)")
+                            } else {
+                            }
+                        }
+                        self.navigationController?.popViewController(animated: true)
+                    } else {
+                        let ac = UIAlertController(title: "Authentication failed", message: "Sorry!", preferredStyle: .alert)
+                        ac.addAction(UIAlertAction(title: "OK", style: .default))
+                        self.present(ac, animated: true)
+                    }
+                }
+            }
+        }
+//        else {
+//            let ac = UIAlertController(title: "Touch ID not available", message: "Your device is not configured for Touch ID.", preferredStyle: .alert)
+//            ac.addAction(UIAlertAction(title: "OK", style: .default))
+//            present(ac, animated: true)
+//        }
+
+    }
+    
+   
 }
